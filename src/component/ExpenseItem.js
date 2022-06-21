@@ -1,13 +1,12 @@
 function ExpenseItem() {
-    return <h2>Expense item!
-               
-              <h2>Food Rs 10</h2> 
-               
-               <h2>Petrol Rs 100</h2>
-               
-               <h2>Movies Rs 200</h2>
-               
-    </h2>
+    return <div>
+        <h2>Expense item!</h2>
+        <div>
+            <li>Food Rs 10</li>
+            <li>Petrol Rs 100</li>
+            <li>Movies Rs 200</li>
+        </div>
+        </div>
            
 }
 
