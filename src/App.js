@@ -1,7 +1,11 @@
 import ExpenseItem from './component/ExpenseItem';
+import './component/Expenses.css';
+import './component/Card';
+import Card from './component/Card';
 
 
-function App() {
+
+const App = () => {
   const expenses = [
     { 
       date: new Date(2022, 5,20),
@@ -24,11 +28,19 @@ function App() {
        locationOfExpenditure: 'Movies',
        place:'PvR',
     },
+
+    {
+      date: new Date(2022, 5,23),
+      title: 'Anime',
+      amount: 500,
+      locationOfExpenditure: 'Anime',
+      place:'Crunchyroll',
+   },
   ];
 
 
   return (
-    <div>
+    <Card>
       { expenses.map((expense)=>{
         return (
           <ExpenseItem title={expense.title} 
@@ -40,7 +52,7 @@ function App() {
         )
       })
     }
-    </div>
+    </Card>
     
   );
     }
