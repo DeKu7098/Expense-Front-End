@@ -2,6 +2,7 @@ import ExpenseItem from './component/ExpenseItem';
 import './component/Expenses.css';
 import './component/Card';
 import Card from './component/Card';
+import NewExpense from './component/NewExpense';
 
 
 
@@ -37,10 +38,14 @@ const App = () => {
       place:'Crunchyroll',
    },
   ];
-
+ const addExpenseHandler = expense =>{
+  console.log('app');
+  console.log(expense);
+ }
 
   return (
     <Card>
+      <NewExpense onAddExpense={addExpenseHandler} />
       { expenses.map((expense)=>{
         return (
           <ExpenseItem title={expense.title} 
