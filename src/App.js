@@ -64,24 +64,33 @@ const App = () => {
     return expense.date.getFullYear().toString() === filteredYear;
    });
  
+   
+
+
  
    return (
     <Card>
       <NewExpense onAddExpense={addExpenseHandler} />
       <ExpensesFilter selected={filteredYear} onChangeFilter={filterChangeHandler} />
-      { filteredExpenses.map((expense)=>{
-        return (
-          <ExpenseItem 
-                  key={expense.id}
-                  title={expense.title} 
-                   date={expense.date}
-                   amount={expense.amount}
-                   place={expense.place}
-                   location={expense.locationOfExpenditure}
-          />
-        )
-      })
-    }
+      {
+        filteredExpenses.length === 1 ? <p>Only single Expense here. Please add more...</p> : 
+        filteredExpenses.map((expense)=>
+           {
+            return (
+                      <ExpenseItem 
+                         key={expense.id}
+                         title={expense.title} 
+                         date={expense.date}
+                         amount={expense.amount}
+                         place={expense.place}
+                         location={expense.locationOfExpenditure}
+                       />
+                  )
+           }
+       )
+      };
+      
+    
     </Card>
     
   );
