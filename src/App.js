@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import ExpenseItem from './component/ExpenseItem';
 import './component/Expenses.css';
 import './component/Card';
 import Card from './component/Card';
 import NewExpense from './component/NewExpense';
 import ExpensesFilter from './component/ExpensesFilter';
+import ExpensesList from './ExpensesList';
+import ExpensesChart from './component/ExpensesChart';
 
 const DUMMY_EXPENSES = [
   { 
@@ -60,37 +61,41 @@ const App = () => {
    const filterChangeHandler = (selectedYear) => {
      setFilteredYear(selectedYear);
    };
+  
+  
+  
    const filteredExpenses = expenses.filter(expense => {
     return expense.date.getFullYear().toString() === filteredYear;
    });
  
    
 
-
- 
    return (
     <Card>
       <NewExpense onAddExpense={addExpenseHandler} />
       <ExpensesFilter selected={filteredYear} onChangeFilter={filterChangeHandler} />
       {
-        filteredExpenses.length === 1 ? <p>Only single Expense here. Please add more...</p> : 
-        filteredExpenses.map((expense)=>
-           {
-            return (
-                      <ExpenseItem 
-                         key={expense.id}
-                         title={expense.title} 
-                         date={expense.date}
-                         amount={expense.amount}
-                         place={expense.place}
-                         location={expense.locationOfExpenditure}
-                       />
-                  )
-           }
-       )
-      };
-      
-    
+        filteredExpenses.length === 1 && <p>Only single Expense here. Please add more...</p> 
+      }
+        
+      {/* //   filteredExpenses.map((expense)=>
+      //      {
+      //       return (
+      //                 <ExpenseItem 
+      //                    key={expense.id}
+      //                    title={expense.title} 
+      //                    date={expense.date}
+      //                    amount={expense.amount}
+      //                    place={expense.place}
+      //                    location={expense.locationOfExpenditure}
+      //                  />
+      //             )
+      //      }
+      //  )
+      // };
+} */}
+    <ExpensesChart expenses={filteredExpenses}/>
+    <ExpensesList expenses={filteredExpenses}/>
     </Card>
     
   );
